@@ -1,1 +1,3 @@
-# CS_285-Deep_Reinforcement_Learning
+# CS 285 - Deep Reinforcement Learning
+
+http://rail.eecs.berkeley.edu/deeprlcourse/
