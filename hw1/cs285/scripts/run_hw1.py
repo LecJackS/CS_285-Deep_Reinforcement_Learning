@@ -5,6 +5,8 @@ from cs285.infrastructure.rl_trainer import RL_Trainer
 from cs285.agents.bc_agent import BCAgent
 from cs285.policies.loaded_gaussian_policy import LoadedGaussianPolicy
 
+import argparse
+
 class BC_Trainer(object):
 
     def __init__(self, params):
@@ -115,26 +117,29 @@ def main(new_args):
 
     trainer = BC_Trainer(params)
     trainer.run_training_loop()
+    return logdir
 
 if __name__ == "__main__":
-    import argparse
+
     args = ['--expert_policy_file', '/home/jack/homework_fall2020/hw1/cs285/policies/experts/Ant.pkl',
             '--expert_data', '/home/jack/homework_fall2020/hw1/cs285/expert_data/expert_data_Ant-v2.pkl',
             '--env_name', 'Ant-v2',
             '--exp_name', 'bc_ant',
-            '--ep_len', '1000',
+            '--ep_len', '5000',
             '--eval_batch_size', '5000',
             '--train_batch_size', '1000',
-            '--num_agent_train_steps_per_iter', '100'
+            '--num_agent_train_steps_per_iter', '100',
+            '--do_dagger',
+            '--n_iter', '50',
             ]
 
     args = ['--expert_policy_file', '/home/jack/homework_fall2020/hw1/cs285/policies/experts/Humanoid.pkl',
             '--expert_data', '/home/jack/homework_fall2020/hw1/cs285/expert_data/expert_data_Humanoid-v2.pkl',
             '--env_name', 'Humanoid-v2',
             '--exp_name', 'bc_humanoid',
-            '--ep_len', '1000',
-            '--eval_batch_size', '5000',
-            '--train_batch_size', '1000',
+            '--ep_len', '10',
+            '--eval_batch_size', '50',
+            '--train_batch_size', '10',
             '--num_agent_train_steps_per_iter', '10'
             ]
     main(args)

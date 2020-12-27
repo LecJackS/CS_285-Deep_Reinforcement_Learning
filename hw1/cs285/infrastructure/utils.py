@@ -5,7 +5,6 @@ import time
 ############################################
 
 def sample_trajectory(env, policy, max_path_length, render=False, render_mode=('rgb_array')):
-
     # initialize env for the beginning of a new rollout
     ob = env.reset() #TODO # HINT: should be the output of resetting the env
 
@@ -75,9 +74,11 @@ def sample_n_trajectories(env, policy, ntraj, max_path_length, render=False, ren
     """
     paths = []
 
-    TODO
+    # TODO
+    for i in range(ntraj):
+        paths.append(sample_trajectory(env, policy, max_path_length, render, render_mode))
 
-    return paths
+    return paths#, ntraj*max_path_length
 
 ############################################
 ############################################
