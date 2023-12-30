@@ -482,10 +482,12 @@ class MemoryOptimizedReplayBuffer(object):
             Index at which the frame is stored. To be used for `store_effect` later.
         """
         if self.obs is None:
-            self.obs      = np.empty([self.size] + list(frame.shape), dtype=np.float32 if self.lander else np.uint8)
-            self.action   = np.empty([self.size],                     dtype=np.int32)
-            self.reward   = np.empty([self.size],                     dtype=np.float32)
-            self.done     = np.empty([self.size],                     dtype=np.bool)
+            # TODO: instead of using np.zeros to prevent holes in replau buffer, find why it samples when still not full
+            # Original code: np.empty()
+            self.obs      = np.zeros([self.size] + list(frame.shape), dtype=np.float32 if self.lander else np.uint8)
+            self.action   = np.zeros([self.size],                     dtype=np.int32)
+            self.reward   = np.zeros([self.size],                     dtype=np.float32)
+            self.done     = np.zeros([self.size],                     dtype=np.bool)
         self.obs[self.next_idx] = frame
 
         ret = self.next_idx

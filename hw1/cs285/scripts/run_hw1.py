@@ -77,7 +77,7 @@ def main(new_args):
 
     parser.add_argument('--video_log_freq', type=int, default=5)
     parser.add_argument('--scalar_log_freq', type=int, default=1)
-    parser.add_argument('--no_gpu', '-ngpu', type=bool, default=True )#action='store_true')
+    parser.add_argument('--no_gpu', '-ngpu', action='store_true')
     parser.add_argument('--which_gpu', type=int, default=0)
     parser.add_argument('--max_replay_buffer_size', type=int, default=1000000)
     parser.add_argument('--save_params', action='store_true')
@@ -121,8 +121,8 @@ def main(new_args):
 
 if __name__ == "__main__":
 
-    args = ['--expert_policy_file', '/home/jack/homework_fall2020/hw1/cs285/policies/experts/Ant.pkl',
-            '--expert_data', '/home/jack/homework_fall2020/hw1/cs285/expert_data/expert_data_Ant-v2.pkl',
+    args = ['--expert_policy_file', '/home/jack/CS_285-Deep_Reinforcement_Learning/hw1/cs285/policies/experts/Ant.pkl',
+            '--expert_data', '/home/jack/CS_285-Deep_Reinforcement_Learning/hw1/cs285/expert_data/expert_data_Ant-v2.pkl',
             '--env_name', 'Ant-v2',
             '--exp_name', 'bc_ant',
             '--ep_len', '5000',
@@ -133,8 +133,8 @@ if __name__ == "__main__":
             '--n_iter', '50',
             ]
 
-    args = ['--expert_policy_file', '/home/jack/homework_fall2020/hw1/cs285/policies/experts/Humanoid.pkl',
-            '--expert_data', '/home/jack/homework_fall2020/hw1/cs285/expert_data/expert_data_Humanoid-v2.pkl',
+    args = ['--expert_policy_file', '/home/jack/CS_285-Deep_Reinforcement_Learning/hw1/cs285/policies/experts/Humanoid.pkl',
+            '--expert_data', '/home/jack/CS_285-Deep_Reinforcement_Learning/hw1/cs285/expert_data/expert_data_Humanoid-v2.pkl',
             '--env_name', 'Humanoid-v2',
             '--exp_name', 'bc_humanoid',
             '--ep_len', '10',

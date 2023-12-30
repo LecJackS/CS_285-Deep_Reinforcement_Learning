@@ -42,7 +42,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '--env_name',
-        default='MsPacman-v0',
+        default='LunarLander-v3',
         choices=('PongNoFrameskip-v4', 'LunarLander-v3', 'MsPacman-v0')
     )
 

@@ -2,14 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d745b478-9ca4-47d1-aeef-ad7c8c4d13e1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/cs285/expert_data/expert_data_Ant-v2.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/cs285/expert_data/expert_data_Ant-v2.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cs285/infrastructure/pytorch_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/cs285/infrastructure/pytorch_util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cs285/infrastructure/replay_buffer.py" beforeDir="false" afterPath="$PROJECT_DIR$/cs285/infrastructure/replay_buffer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hw2/.idea/hw2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cs285/infrastructure/rl_trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/cs285/infrastructure/rl_trainer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cs285/infrastructure/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/cs285/infrastructure/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cs285/policies/MLP_policy.py" beforeDir="false" afterPath="$PROJECT_DIR$/cs285/policies/MLP_policy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cs285/scripts/run_hw1.py" beforeDir="false" afterPath="$PROJECT_DIR$/cs285/scripts/run_hw1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs285/scripts/run_statistics.py" beforeDir="false" afterPath="$PROJECT_DIR$/cs285/scripts/run_statistics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_hw1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/run_hw1.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw2/cs285/agents/pg_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/../hw2/cs285/agents/pg_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw2/cs285/infrastructure/rl_trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../hw2/cs285/infrastructure/rl_trainer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw2/cs285/infrastructure/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../hw2/cs285/infrastructure/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw2/cs285/policies/MLP_policy.py" beforeDir="false" afterPath="$PROJECT_DIR$/../hw2/cs285/policies/MLP_policy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw2/cs285/scripts/run_hw2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../hw2/cs285/scripts/run_hw2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw2/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../hw2/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw3/cs285/infrastructure/rl_trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../hw3/cs285/infrastructure/rl_trainer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw3/cs285/infrastructure/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../hw3/cs285/infrastructure/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hw3/cs285/policies/MLP_policy.py" beforeDir="false" afterPath="$PROJECT_DIR$/../hw3/cs285/policies/MLP_policy.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +35,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../hw2" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -38,7 +46,12 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.run_hw1">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="hw1" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -65,6 +78,9 @@
       <module name="hw1" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cs285/scripts" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -80,9 +96,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="run_statistics" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="hw1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cs285/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cs285/scripts/run_statistics.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.run_hw1" />
+        <item itemvalue="Python.run_statistics" />
       </list>
     </recent_temporary>
   </component>
@@ -104,6 +143,39 @@
       <workItem from="1608604099676" duration="553000" />
       <workItem from="1608604666214" duration="828000" />
       <workItem from="1608605507366" duration="4115000" />
+      <workItem from="1608652412944" duration="870000" />
+      <workItem from="1608653798001" duration="8000" />
+      <workItem from="1608653823051" duration="599000" />
+      <workItem from="1608654649428" duration="855000" />
+      <workItem from="1608686943716" duration="4296000" />
+      <workItem from="1608940483875" duration="36000" />
+      <workItem from="1608940549771" duration="4687000" />
+      <workItem from="1608953164671" duration="2723000" />
+      <workItem from="1608993137144" duration="1970000" />
+      <workItem from="1608999998981" duration="847000" />
+      <workItem from="1609001088728" duration="8893000" />
+      <workItem from="1609016644161" duration="5436000" />
+      <workItem from="1609022229962" duration="1503000" />
+      <workItem from="1609024153083" duration="686000" />
+      <workItem from="1609025189140" duration="1252000" />
+      <workItem from="1609084553015" duration="4000" />
+      <workItem from="1609084571160" duration="547000" />
+      <workItem from="1609085130924" duration="2334000" />
+      <workItem from="1609090628030" duration="767000" />
+      <workItem from="1609092437456" duration="733000" />
+      <workItem from="1609093657494" duration="803000" />
+      <workItem from="1609171305122" duration="15000" />
+      <workItem from="1609190137993" duration="914000" />
+      <workItem from="1609191098332" duration="223000" />
+      <workItem from="1609191376859" duration="878000" />
+      <workItem from="1609193760248" duration="8000" />
+      <workItem from="1609194851821" duration="312000" />
+      <workItem from="1609255335077" duration="595000" />
+      <workItem from="1609256470106" duration="1350000" />
+      <workItem from="1609272945055" duration="7202000" />
+      <workItem from="1609620329523" duration="1319000" />
+      <workItem from="1609769121787" duration="3493000" />
+      <workItem from="1610413267847" duration="20000" />
     </task>
     <servers />
   </component>
@@ -123,6 +195,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/hw1$run_hw1.coverage" NAME="run_hw1 Coverage Results" MODIFIED="1608602809566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cs285/scripts" />
+    <SUITE FILE_PATH="coverage/hw1$run_hw1.coverage" NAME="run_hw1 Coverage Results" MODIFIED="1608993291081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cs285/scripts" />
+    <SUITE FILE_PATH="coverage/hw1$run_statistics.coverage" NAME="run_statistics Coverage Results" MODIFIED="1609019728984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cs285/scripts" />
   </component>
 </project>

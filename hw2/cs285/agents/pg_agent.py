@@ -4,6 +4,7 @@ from .base_agent import BaseAgent
 from cs285.policies.MLP_policy import MLPPolicyPG
 from cs285.infrastructure.replay_buffer import ReplayBuffer
 
+from cs285.infrastructure.utils import normalize
 
 class PGAgent(BaseAgent):
     def __init__(self, env, agent_params):
@@ -46,7 +47,12 @@ class PGAgent(BaseAgent):
 
         # TODO: step 3: use all datapoints (s_t, a_t, q_t, adv_t) to update the PG actor/policy
         ## HINT: `train_log` should be returned by your actor update method
-        train_log = TODO
+        #train_log = TODO
+        #####################################################
+
+        train_log = self.actor.update(observations, actions, advantages, q_values)
+
+        #####################################################
 
         return train_log
 
@@ -55,7 +61,7 @@ class PGAgent(BaseAgent):
         """
             Monte Carlo estimation of the Q function.
         """
-
+        print('>> rewards_list:', np.shape(rewards_list))
         # Case 1: trajectory-based PG
         # Estimate Q^{pi}(s_t, a_t) by the total discounted reward summed over entire trajectory
         if not self.reward_to_go:
@@ -91,7 +97,10 @@ class PGAgent(BaseAgent):
             ## have the same mean and standard deviation as the current batch of q_values
             baselines = baselines_unnormalized * np.std(q_values) + np.mean(q_values)
             ## TODO: compute advantage estimates using q_values and baselines
-            advantages = TODO
+            #advantages = TODO
+            #####################################################
+            advantages = q_values.copy() - baselines.copy()
+            #####################################################
 
         # Else, just set the advantage to [Q]
         else:
@@ -102,7 +111,10 @@ class PGAgent(BaseAgent):
             ## TODO: standardize the advantages to have a mean of zero
             ## and a standard deviation of one
             ## HINT: there is a `normalize` function in `infrastructure.utils`
-            advantages = TODO
+            #advantages = TODO
+            #####################################################
+            advantages = normalize(advantages, np.mean(advantages), np.std(advantages))
+            #####################################################
 
         return advantages
 
@@ -130,8 +142,23 @@ class PGAgent(BaseAgent):
 
         # TODO: create list_of_discounted_returns
         # Hint: note that all entries of this output are equivalent
-            # because each sum is from 0 to T (and doesnt involve t)
+        #       because each sum is from 0 to T (and doesnt involve t)
+        #####################################################
 
+        # Summation operation elem by elem (vectorized below)
+        #disc_return = 0
+        #for tp, r in enumerate(rewards):
+        #    disc_return += r * self.gamma ** tp
+        # Vectorized solution. Compute all discount factors
+        discounts = np.power(self.gamma, np.arange(len(rewards)))
+        # Elem by elem product operation and sum all values
+        disc_return = np.sum(rewards * discounts)
+
+        # All entries are the same for each timestep t
+        # (as oppossed by cumsum and "from now on" type of sum)
+        list_of_discounted_returns = [disc_return] * len(rewards)
+
+        #####################################################
         return list_of_discounted_returns
 
     def _discounted_cumsum(self, rewards):
@@ -143,9 +170,18 @@ class PGAgent(BaseAgent):
 
         # TODO: create `list_of_discounted_returns`
         # HINT1: note that each entry of the output should now be unique,
-            # because the summation happens over [t, T] instead of [0, T]
+        #        because the summation happens over [t, T] instead of [0, T]
         # HINT2: it is possible to write a vectorized solution, but a solution
-            # using a for loop is also fine
+        #        using a for loop is also fine
+        #####################################################
+
+        # Compute all discount factors
+        discounts = np.power(self.gamma, np.arange(len(rewards)))
+        # Elem by elem prod operation but using (inverse ordered)cumsum operation
+        # All entries are different as they sum from t to T
+        list_of_discounted_cumsums = np.cumsum((rewards * discounts)[::-1])[::-1]
+        print(list_of_discounted_cumsums)
+        #####################################################
 
         return list_of_discounted_cumsums
 

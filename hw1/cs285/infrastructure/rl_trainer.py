@@ -189,7 +189,6 @@ class RL_Trainer(object):
             ## TODO look in utils and implement sample_n_trajectories
             # Using self.params['ep_len'] instead of MAX_VIDEO_LEN
             train_video_paths = utils.sample_n_trajectories(self.env, collect_policy, MAX_NVIDEO, self.params['ep_len'], True)
-            print(envsteps_this_batch)
         return paths, envsteps_this_batch, train_video_paths
 
 
@@ -218,7 +217,10 @@ class RL_Trainer(object):
         # TODO relabel collected obsevations (from our policy) with labels from an expert policy
         # HINT: query the policy (using the get_action function) with paths[i]["observation"]
         # and replace paths[i]["action"] with these expert labels
-
+        for i in range(len(paths)):
+            obs = paths[i]["observation"]
+            expert_action = expert_policy.get_action(obs)
+            paths[i]["action"] = expert_action
         return paths
 
     ####################################

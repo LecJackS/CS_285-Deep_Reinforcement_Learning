@@ -14,6 +14,11 @@ class ArgMaxPolicy(object):
         
         ## TODO return the action that maxinmizes the Q-value 
         # at the current observation as the output
-        actions = TODO
+        # actions = TODO
+        ##########
+        # actions contains 4 last frames, thats why I choose the last predicted actions?
+        actions = self.critic.qa_values(observation)
+        action = np.argmax(actions[-1])
+        ##########
 
         return action.squeeze()

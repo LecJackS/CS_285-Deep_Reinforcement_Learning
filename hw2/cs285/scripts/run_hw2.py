@@ -51,7 +51,7 @@ class PG_Trainer(object):
             )
 
 
-def main():
+def main(new_args):
 
     import argparse
     parser = argparse.ArgumentParser()
@@ -80,7 +80,7 @@ def main():
 
     parser.add_argument('--save_params', action='store_true')
 
-    args = parser.parse_args()
+    args = parser.parse_args(new_args)
 
     # convert to dictionary
     params = vars(args)
@@ -112,4 +112,30 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    args = ['--env_name', 'CartPole-v0',
+            '-n', '100',
+            '-b', '5000',
+            '--dont_standardize_advantages',
+            '--reward_to_go',
+            '--nn_baseline',
+            '--exp_name', 'q1_lb_no_rtg_dsa',
+            '--discount', '0.9',
+            '--learning_rate', '5e-3',
+            '--seed', '42'
+            ]
+
+    # Lunar lander
+
+    args = ['--env_name', 'LunarLanderContinuous-v2',
+            '--ep_len', '1000',
+            '-n', '100',
+            '-b', '40000',
+            '--reward_to_go',
+            '--nn_baseline',
+            '--exp_name', 'q3_b40000_r0.005',
+            '--discount', '0.99',
+            '--learning_rate', '0.005',
+            '--seed', '42'
+            ]
+
+    main(args)

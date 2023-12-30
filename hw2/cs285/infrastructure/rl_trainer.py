@@ -3,6 +3,7 @@ import pickle
 import os
 import sys
 import time
+from tqdm import tqdm
 
 import gym
 from gym import wrappers
@@ -152,11 +153,63 @@ class RL_Trainer(object):
     def collect_training_trajectories(self, itr, load_initial_expertdata, collect_policy, batch_size):
         # TODO: get this from hw1
         # if your load_initial_expertdata is None, then you need to collect new trajectories at *every* iteration
+        ####################################
+        # HINT: depending on if it's the first iteration or not, decide whether to either
+        # (1) load the data. In this case you can directly return as follows
+        # ``` return loaded_paths, 0, None ```
+
+        # (2) collect `self.params['batch_size']` transitions
+        if itr == 0 and load_initial_expertdata is not None:
+            # Load pickle (.pkl) of data
+            with open(load_initial_expertdata, 'rb') as handle:
+                loaded_paths = np.load(handle, allow_pickle=True)
+
+            paths = loaded_paths
+            envsteps_this_batch = 0
+        else:
+            # TODO collect `batch_size` samples to be used for training
+            # HINT1: use sample_trajectories from utils
+            # HINT2: you want each of these collected rollouts to be of length self.params['ep_len']
+            print("Collecting data to be used for training...")
+            paths, envsteps_this_batch = utils.sample_trajectories(self.env, policy=collect_policy,
+                                                                   min_timesteps_per_batch=batch_size,
+                                                                   max_path_length=self.params['ep_len'],
+                                                                   render=False, render_mode=('rgb_array'))  # TODO
+
+        # collect more rollouts with the same policy, to be saved as videos in tensorboard
+        # note: here, we collect MAX_NVIDEO rollouts, each of length MAX_VIDEO_LEN
+        train_video_paths = None
+        if self.log_video:
+            print('Collecting train rollouts to be used for saving videos...')
+            ## TODO look in utils and implement sample_n_trajectories
+            # Using self.params['ep_len'] instead of MAX_VIDEO_LEN
+            train_video_paths = utils.sample_n_trajectories(self.env, collect_policy, MAX_NVIDEO, self.params['ep_len'],
+                                                            True)
+        ####################################
         return paths, envsteps_this_batch, train_video_paths
 
     def train_agent(self):
         # TODO: get this from hw1
-        return train_logs
+        ####################################
+        print('Training agent using sampled data from replay buffer...')
+        all_logs = []
+        loop = tqdm(range(self.params['num_agent_train_steps_per_iter']))
+        for train_step in loop:
+            # TODO sample some data from the data buffer
+            # HINT1: use the agent's sample function
+            # HINT2: how much data = self.params['train_batch_size']
+            bs = self.params['train_batch_size']
+            ob_batch, ac_batch, re_batch, next_ob_batch, terminal_batch = self.agent.sample(bs)  # TODO
+
+            # TODO use the sampled data to train an agent
+            # HINT: use the agent's train function
+            # HINT: keep the agent's training log for debugging
+            print('>> re_batch.shape:', np.shape(re_batch))
+            train_log = self.agent.train(ob_batch, ac_batch, re_batch, next_ob_batch, terminal_batch)  # TODO
+            all_logs.append(train_log)
+            loop.set_postfix(loss=all_logs[-1]["Training Loss"])
+        ####################################
+        return all_logs
 
     ####################################
     ####################################
